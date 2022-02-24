@@ -16,7 +16,89 @@
 </head>
 
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1 class="text-center"> klaytn</h1>
+        <h3 class="text-center">plus game</h3>
+        <h3 class="text-center">
+          <code> 3초 안에 맞출 시 0.1 klay 지급 이벤트 </code>
+          <button class="btn btn-info pull-right" type="button" id="login" data-target="#loginModal" data-toggle="modal"> login</button>
+          <button class="btn btn-info pull-right" id="logout" style="display: none;" onclick="App.handleLogout()">logout</button>
+        </h3>
+        <div class="text-center" id="address"></div>
+        <div class="text-center" id="contractBalance"></div>
+        <hr />
+      </div>
+    </div>
+  </div>
 
+
+  <div class="row text-center">
+    <div id="game" style="display: none;">
+      <div class="yellow-box" id="start">
+        <a href="#" onclick="App.generateNumbers()">Start</a>
+      </div>
+      <div class="yellow-box" id="question" style="display: none;">
+        <span id="num1"></span> + <span id="num2"></span> = ?
+        <div class="input-group">
+          <input type="number" class="form-control" id="answer" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" onclick="App.submitAnswer()">제출</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="spin"></div>
+
+  <div class="row text-center">
+    <p id="timer"></p>
+  </div>
+
+  <div class="row text-center">
+    <div id="transaction"></div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-2 col-md-offset-5">
+      <div id="owner" style="display: none;">
+        <hr/>
+        <label for=""> klay 보내기 </label>
+          <div class= "input-group">
+            <input type="number" class="form-control" id="amount"/>
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" onclick="App.deposit()"> 송금 </button>
+            </span>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="modal fade" role="dialog" tabindex="-1" id="loginModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="ketstore">KeyStore</label>
+            <input type="file" id="keystore" onchange="App.handleImport()">
+          </div>
+          <div class="form-group">
+            <label for="input-password">비밀번호</label>
+            <input type="password" class="form-control" id="input-password" onchange="App.handlePassword()">
+          </div>
+          <p class="help-block" id="message"></p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+            <button type="button" class="btn btn-primary" id="submit" onclick="App.handleLogin()">제출</button>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
 </body>
 
 </html>
